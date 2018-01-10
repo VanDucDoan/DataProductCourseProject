@@ -1,0 +1,66 @@
+---
+title: "Help Documentation"
+author: "Duc Doan"
+date: "1/9/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Main function of the application:
+
+The application provides a simple interface software to solve general classification problems by using some typical machine learning algorithms:
+
+* Multiple Logistic Regression
+
+* Decision Tree
+
+* Random Forest
+
+* Support Vector Machine
+
+* XGBoost
+
+## Steps for using the application:
+
+### Step 1: Load and prepare data:
+
+1. Load the data file in the CSV format by clicking "Browse"
+
+2. Choose the format of data in the file by clicking the radio buttions (in "Separator", "Quote", and "Display")
+
+3. Choose mode for displaying the data by clicking the radio buttion (in "Display").
+
+### Step 2: Choose data features and algorithm: 
+
+1. Choose the columns for features (must be numeric type)
+
+2. Choose the column for the output (must be categorical type)
+
+3. Choose the machine algorithm for classification
+
+4. Choose the ratio for dividing the training set and validating set.
+
+### Step 3: Start doing data analytics
+
+1. Click "Submit" to start.
+
+### Step 4: Check results and visualization:
+
+1. Visualization
+
+2. Exploratory Data Analysis
+
+3. Training
+
+4. Validating.
+
+## Notes:
+
+1. The data must be clean and right-formated (e.g. no missing data, in CSV format) 
+
+2. Parameters of all algorithms are setup by default (e.g. no cross-validation, no hyperparameter tuning).
+
+## Thank you!

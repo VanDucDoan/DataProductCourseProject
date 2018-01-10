@@ -1,0 +1,90 @@
+Typical Machine Learning Algorithms for Classification Problems
+========================================================
+author: Duc Doan
+date: 2018 January 01
+autosize: true
+
+<style>
+.small-code pre code {
+  font-size: 1.25em;
+}
+</style>
+
+Iris Dataset: Example
+========================================================
+class: small-code
+
+```{r}
+summary(iris)
+```
+
+Exploratory Data Analytics
+========================================================
+
+```{r, echo = FALSE}
+library(rpart.plot)
+library(rpart)
+library(randomcoloR) # library for colors
+
+# number of classes in dataset
+nClasses <- 3
+
+nColors <- 20 # number of colors
+palette <- distinctColorPalette(nColors) # color for each class
+
+# plot pair of features in dataset
+pairs(iris[, c(1,2,3,4)], main = "Pair graph of features in dataset", pch = 21, col = palette[1:nClasses][unclass(iris[, 5])])
+par(xpd = TRUE)
+legend(0.05, 1.05, as.vector(unique(iris[, 5])), fill = palette[1:nClasses])
+```
+
+Classification Algorithms
+========================================================
+
+- Multiple Logistic Regression
+
+- Decision Tree
+
+- Random Forest
+
+- Support Vector Machine
+
+- XGBoost
+
+
+Classification Results
+========================================================
+
+```{r, echo=FALSE}
+library(nnet)
+library(rpart)
+
+# divide the the dataset into training data and validating data
+set.seed(12345)
+train <- sample(nrow(iris), 0.7 * nrow(iris))
+df.train <- iris[train, ]
+df.valid <- iris[-train, ]
+
+# logistic regression
+fit.logit <- multinom(Species ~ ., data = df.train, trace = FALSE) # use multi-class logistic regression
+
+# calculate training prediction and validating prediction
+valid.logit.probs <- predict(fit.logit, df.valid, "probs")
+
+# position of class predicted
+valid.logit.pos <- apply(valid.logit.probs, 1, which.is.max)
+
+# convert to name of class predicted
+classNames <- unique(iris[, 5])
+convertClassNames <- function(index, classNames) {return(classNames[index])}
+valid.logit <- apply(as.matrix(valid.logit.pos), 1, convertClassNames, classNames)
+
+# results
+confusionMat <- table(df.valid[, 5], valid.logit)
+confusionMat
+```
+
+- the accuracy of classification algorithm is checked by using validation data
+- The application provides a simple solution for classification problems
+- The data for classification need preprocessing before putting the application.
+

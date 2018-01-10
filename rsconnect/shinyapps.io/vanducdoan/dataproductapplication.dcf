@@ -1,0 +1,10 @@
+name: dataproductapplication
+title:
+username:
+account: vanducdoan
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 255540
+bundleId: 1170459
+url: https://vanducdoan.shinyapps.io/dataproductapplication/
+when: 1515592965.34353
